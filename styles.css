@@ -1,0 +1,52 @@
+#name {
+  background-color: black;
+  color: white;
+  padding: 50px;
+  text-align: center;
+  font-size: 250%;
+}
+
+#main_id {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+
+  margin: 0 auto;
+  width: 60%;
+  float: none;
+}
+
+#first_column {
+  font-style: italic;
+  color: red;
+}
+
+#image {
+  max-width: 100%;
+  height: auto;
+}
+
+#second_column {
+  text-align: left;
+}
+
+.company {
+  border-left: 6px solid red;
+  background-color: lightgrey;
+}
+
+.job {
+  text-decoration: underline;
+}
+
+.description {
+  font-style: italic;
+}
+
+.responsibility {
+  font-variant: small-caps;
+}
+
+.list {
+  list-style-type: circle;
+}
