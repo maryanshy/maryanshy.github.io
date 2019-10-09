@@ -10,8 +10,8 @@
   <div class="container">
     <div class="wrapper">
       <div class="header">Test JSON page</div>
-      <!-- <button class="button" onclick="loadData()">Load Some JSON</button> -->
-      <button class="button" onclick="console.log('You haven\'t written a function yet!');">Click me to replace list entries</button>
+      <button class="button" onclick="loadData()">Load Some JSON</button>
+      <!--<button class="button" onclick="console.log('You haven\'t written a function yet!');">Click me to replace list entries</button>-->
       <div class="content">
         <ul class="instructions">
           <li>Delete and re-clone the class repository</li>
@@ -278,7 +278,47 @@
       { "name": "Zambia", "code": "ZM" },
       { "name": "Zimbabwe", "code": "ZW" }
     ]
+
+
     console.log("List of countries in the world", countries);
+
+    sessionStorage.setItem("json_item", JSON.stringify(countries));
+
+    function loadData(){
+      const grab = sessionStorage.getItem("json_item");
+      let get_list = JSON.parse(grab);
+
+
+
+      let count = 1;
+
+      var instructions = document.getElementsByClassName("instructions");
+      var main_list =  document.createElement('ol');
+
+      while (count  <  51){
+        let item = document.createElement('li');
+        let second_list = [];
+        let spot = Math.floor((Math.random() * 243));
+        if (second_list.includes(spot) == false){
+
+          let country_name = get_list[spot].name;
+          item.innerHTML = country_name;
+          main_list.appendChild(item);
+
+
+          second_list[count] = spot
+
+          count += 1;
+       }
+     }
+
+     instructions[0].innerHTML = "";
+     instructions[0].appendChild(main_list);
+   }
+
+
+
+
   </script>
 </body>
 
