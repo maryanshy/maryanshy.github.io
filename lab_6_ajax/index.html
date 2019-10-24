@@ -20,10 +20,8 @@
      
 
       function organize() {
-        const grab = sessionStorage.getItem("json_item");
-        let get_list = JSON.parse(grab);
         let count = 1;
-        var instructions = document.getElementsByClassName("instructions");
+        var instructions = document.querySelector(".content");
         var main_list = document.createElement("ol");
         while (count < 51) {
           let item = document.createElement("li");
