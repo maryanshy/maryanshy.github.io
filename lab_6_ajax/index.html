@@ -15,37 +15,64 @@
       </div>
     </div>
     <script>
-
-      
-     
-
-      function organize() {
-        let count = 1;
-        var instructions = document.querySelector(".content");
-        var main_list = document.createElement("ol");
-        while (count < 51) {
-          let item = document.createElement("li");
-          let second_list = [];
-          let spot = Math.floor(Math.random() * 243);
-          if (second_list.includes(spot) == false) {
-            let country_name = get_list[spot].name;
-            item.innerHTML = country_name;
-            main_list.appendChild(item);
-            second_list[count] = spot;
-            count += 1;
-          }
-        }
-        instructions[0].innerHTML = "";
-        instructions[0].appendChild(main_list);
-      }
-
       function loadData() {
         fetch("ajax_sample.json")
           .then(res => res.json())
           .then(res => res.map(c => c.name.concat(" (", c.code, ")")))
-          .then(codes => document.querySelector(".content").innerText = codes)
-          .then(res => organize(res));
-      }
+          .then(codes => {
+
+
+            
+            const content = document.querySelector(".content");
+            content.innerHTML = "";
+            
+            let temp = [];
+            
+
+            
+
+            let main_list = document.createElement("ol");
+            
+            let second = [];
+                     
+            for (i = 0; i < 15; i += 0) {
+              
+
+              let random = Math.floor(Math.random() * 243);
+
+              
+
+              if (temp.includes(random) === false) {
+                temp[i] = random;
+                second[i] = codes[random];
+                i += 1;
+              
+
+              }
+            }
+
+
+            second.sort();
+
+            for (a of second){
+
+              let item = document.createElement("li");
+              item.innerText = a;
+              main_list.appendChild(item);
+            }
+            
+            console.log(second);
+            
+
+           
+            content.appendChild(main_list);
+            return content;
+            
+
+          });
+
+        }
+            
     </script>
   </body>
 </html>
