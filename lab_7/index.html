@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>Test AJAX page</title>
+  <link rel="stylesheet" type="text/css" href="./lab_styles.css">
+</head>
+
+<body>
+  <div class="container">
+    <div class="wrapper">
+      <div class="header">UMD Bus Routes</div>
+      <button class="button" onclick="loadData()">Load Some JSON</button>
+      <div class="content"></div>
+      <div class="footer"></div>
+    </div>
+  </div>
+  <script>
+    function loadData() {
+      
+      fetch('https://api.umd.io/v0/bus/routes')
+        .then(res => res.json())
+        .then(res => res.map(c => c.title))
+        //.then(res => res.map(c => c.route_id.concat(" (", c.title, ")")))
+        .then(res => {
+          
+          //let string2 = JSON.stringify(res);
+          //let string3 = JSON.stringify(string2);
+          const content = document.querySelector(".content");
+          content.innerHTML = "";
+
+
+          let main_list = document.createElement("ul");
+
+          bb = [];
+
+    
+
+          for(i=0; i<res.length -1; i+=1){
+          //for (i of res){
+            //console.log(i);
+            
+            let item = document.createElement("li");
+            item.innerText = res[i];
+            main_list.appendChild(item);
+            bb[i] = res[i];
+
+            
+            
+            console.log(item);
+            
+
+          
+          }
+          console.log(bb)
+
+          //console.log(dd);
+          //return res;
+          //return string2;
+
+          content.appendChild(main_list);
+          return content;
+          return bb;
+          
+
+          
+        })
+        .then(res => {
+
+
+          let top;
+
+          let route = "123 Discovery District"
+
+          const header = document.querySelector(".header");
+          header.innerHTML = "";
+
+          for (i of bb){
+            console.log(i);
+
+            if (i===route){
+              top = i;
+            };
+      
+          }
+
+        
+          header.innerHTML = "UMD Bus Route " + top;
+
+
+          
+        });     
+
+        //.then(data => document.querySelector(".content").innerText = data);
+    }
+  </script>
+</body>
+
+</html>
