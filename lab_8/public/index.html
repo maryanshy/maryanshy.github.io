@@ -25,7 +25,35 @@
           return res;
         })
         .then(res => res.data.map(c => c))
-        .then(codes => document.querySelector(".content").innerText = codes);
+        .then(res =>{
+
+          const content = document.querySelector(".content");
+          content.innerHTML = "";
+          let main_list = document.createElement("ol");
+
+          bb = [];
+      
+    
+          for(i=0; i<res.length -1; i+=1){
+          //for (i of res){
+            //console.log(i);
+            
+            let item = document.createElement("li");
+            item.innerText = res[i];
+            main_list.appendChild(item);
+            bb[i] = res[i];
+            console.log(item);
+            
+          
+          }
+
+          console.log(bb);
+          content.appendChild(main_list);
+          return content;
+
+        })
+
+        //.then(codes => document.querySelector(".content").innerText = codes);
     }
   </script>
 </body>
